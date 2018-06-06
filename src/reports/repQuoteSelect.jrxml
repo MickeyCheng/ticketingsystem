@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bbcf598f-8c6c-4a35-bdd7-f799b5633c3a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="showQuoteId" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="showQuoteID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from tblQuoteGenerator where qg_id =$P{showQuoteID}]]>
+	</queryString>
+	<field name="qg_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_clientName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_clientCompany" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_clientAddress" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_clientContact" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_clientEmail" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_itemcode" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_itemName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_quantity" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_price" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_totalPrice" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_totalQuantity" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_totalInvoiceAmount" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qg_quotedate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="255" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="292" y="0" width="263" height="62" uuid="5ddba0ec-7220-40ac-932d-79e17c455d9f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="20" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[iSoft Information Technology]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="4" y="87" width="548" height="22" uuid="a49d9ddf-7685-4430-b1f0-40cc933c18a7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[QUOTATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="369" y="114" width="105" height="15" forecolor="#736343" uuid="a2235202-7fa6-474f-976a-ba26932550df"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[QUOTATION #:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="7" y="116" width="116" height="15" forecolor="#736343" uuid="37da6757-1674-4db4-8292-e7dc86fdd74f"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[COMPANY:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="7" y="131" width="116" height="15" forecolor="#736343" uuid="ef7b664b-49a1-48a6-8748-692ac0ff3ec7"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ADDRESS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="7" y="163" width="116" height="15" forecolor="#736343" uuid="884466e8-58dc-47b6-bac9-a6afa50994fe"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[CONTACT NUMBER:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="6" y="178" width="116" height="15" forecolor="#736343" uuid="69e881bf-983e-465f-93dd-b8884281ed20"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[EMAIL ADDRESS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="369" y="129" width="105" height="15" forecolor="#736343" uuid="82308cef-d5e0-4281-a80c-7c5e5b1f7264"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[DATE:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="474" y="114" width="84" height="15" uuid="d0ee27c4-5d73-4631-bf9e-0d10da9b24e1"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_id}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="31" y="201" width="234" height="15" uuid="0db483ce-c216-4b39-b0b1-34b470dc6844"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_clientName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="123" y="116" width="234" height="15" uuid="89476016-511c-4dea-8a05-96f5f96df12e"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_clientCompany}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="123" y="131" width="234" height="32" uuid="0899c3a3-a2ce-4d64-99b4-6dcbd0fa2714"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_clientAddress}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="123" y="163" width="234" height="15" uuid="e00b4a0a-d439-4688-8e9f-86daf2956c20"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_clientContact}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="123" y="178" width="234" height="15" uuid="a5f9e752-95a5-4b49-8083-93658fc23d21"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_clientEmail}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="479" y="129" width="79" height="15" uuid="b2f35182-723e-45a5-a5c8-22029ea29e0a"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_quotedate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="6" y="201" width="25" height="15" forecolor="#000000" uuid="9f4e506c-3848-40d5-a6fb-f81ff4489aa0"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="7" y="216" width="548" height="33" forecolor="#000000" uuid="b9c65528-ebd7-410c-a125-d7eef2b94df8"/>
+				<textElement>
+					<font size="9" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Further to your recent product inquiry, please find below the best quote for the specified items you have requested.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="1" y="3" width="75" height="15" forecolor="#736343" uuid="a3405362-3ad9-4888-a409-732ab2de22e0"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ITEM CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="85" y="3" width="225" height="15" forecolor="#736343" uuid="38d72a4e-918a-4ddb-aa53-0bf8dd69e2d5"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[DESCRIPTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="321" y="3" width="48" height="15" forecolor="#736343" uuid="8e5bd7ee-7194-4a6d-aa28-9483c15d1a0e"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="376" y="3" width="87" height="15" forecolor="#736343" uuid="68d86a2f-64eb-4f15-b279-5c27bcc4e550"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[UNIT PRICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="468" y="3" width="81" height="15" forecolor="#736343" uuid="d141ba17-538b-4bb3-85c5-9563319f3648"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[TOTAL PRICE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="18" width="555" height="1" uuid="706d5c81-3213-4c55-b57c-6cfaba7cf209"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Prevent">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" x="12" y="0" width="75" height="15" isRemoveLineWhenBlank="true" uuid="6654f228-b559-4127-81c0-044d47555ed7"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_itemcode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" x="96" y="0" width="225" height="15" isRemoveLineWhenBlank="true" uuid="5095273a-3eb0-4b4a-9a4f-7fabc14cc403"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_itemName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" x="321" y="0" width="48" height="15" isRemoveLineWhenBlank="true" uuid="b3817b3e-e7bc-46be-92a5-48370d5a2424"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_quantity}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" x="376" y="0" width="87" height="15" isRemoveLineWhenBlank="true" uuid="9301ca27-fc3f-4751-8d54-1d691c061dbd"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_price}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" x="468" y="0" width="81" height="15" isRemoveLineWhenBlank="true" uuid="93cddab8-5ccc-41ff-a98c-babbbeece8db"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_totalPrice}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="19" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="be7406b4-ff42-4fde-966b-cbf51920e9e9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="e4dbff2f-2c2e-4781-aa00-81330df58900"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="313" y="0" width="40" height="20" forecolor="#736343" uuid="e125aba8-fbd8-449f-adc9-c7bbfadecc18"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="233" y="0" width="80" height="20" forecolor="#736343" uuid="4d15a1f1-e721-4d69-ba4f-5367bdb830a6"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="213">
+			<staticText>
+				<reportElement style="Column header" x="314" y="5" width="111" height="15" forecolor="#736343" uuid="13370228-0ac9-49f0-82c3-120a24b66210"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[TOTAL QTY:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="315" y="20" width="111" height="15" forecolor="#736343" uuid="90307fc3-d428-4681-a6f1-dd8589ac04cc"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[TOTAL QUOTE AMOUNT:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="432" y="5" width="110" height="15" uuid="1a82fd66-ffd4-429b-b6e0-d11023416d8d"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_totalQuantity}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="466" y="20" width="76" height="15" uuid="b839f4db-8dfe-485e-96ab-b54a8b4790a6"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qg_totalInvoiceAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="432" y="20" width="34" height="15" forecolor="#000000" uuid="f3374523-e026-4c89-b5fb-14f713dabefc"/>
+				<textElement>
+					<font size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[BHD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="49" width="548" height="33" forecolor="#000000" uuid="2522b517-22ce-47d3-b6fa-248911ccbcde"/>
+				<textElement>
+					<font size="9" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[If you are interested in taking this further please contact us so that we can raise the necessary order processing documentation.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="103" width="154" height="15" forecolor="#000000" uuid="d45ac77f-6e17-47cb-a41a-dccf5e30b0d3"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Ali Ahmed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="118" width="154" height="15" forecolor="#000000" uuid="bcbd86b3-4a07-4f03-8567-e9774e5af767"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Services & Products Manager]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="133" width="154" height="15" forecolor="#000000" uuid="cbc60d19-ef66-477b-8a5d-342e7c88788a"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Mobile: +973 3344 9227]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>

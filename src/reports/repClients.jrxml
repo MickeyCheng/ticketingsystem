@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="67382128-2bb5-4e80-8d29-6caea3fc4572">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="dateFrom" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateTo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="showStatus" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="showAssigned" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="showAttachment" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="showClient" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from tblTicket where ti_client =$P{showClient} and ti_dateRaised between $P{dateFrom} and $P{dateTo} order by ti_status]]>
+	</queryString>
+	<field name="ti_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_client" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_dateRaised" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_category" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_assignee" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_assigned" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_time" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_resolvedate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_resolvetime" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_priority" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_attachment" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="204" y="10" width="357" height="62" uuid="23f25ef0-d91d-4930-87b8-3c47bf4f4809"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[iSoft Information Technologies]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="10" y="10" width="194" height="125" uuid="ab97d2e0-18d7-4d78-8ee6-a9673a4ddf58"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="SubTitle" x="291" y="72" width="196" height="22" uuid="78dfc3e3-d609-473d-9dad-7657ac4a3d56"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="16" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[ticketing report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="73" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="9470c8e4-cb25-4721-b6d7-88e6a733dfdb"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="1" y="56" width="60" height="15" forecolor="#736343" uuid="616613c0-3be3-4693-a0ef-0586ac051d6e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="3" y="26" width="63" height="15" forecolor="#736343" uuid="dddecbab-ddad-42fd-bec9-ddfb64554a34"/>
+				<text><![CDATA[CLIENT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="67" y="56" width="105" height="15" forecolor="#736343" uuid="728ad4bf-6508-42c7-92f2-540eb83ba0e0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DATE RAISED:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="66" y="26" width="325" height="15" uuid="4249a982-8b54-4e03-84cc-022456a0ca82"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ti_client}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="174" y="56" width="87" height="15" forecolor="#736343" uuid="965f88ad-f105-4b6b-a6e1-335e1ba4f5d0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[RAISED BY:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="263" y="55" width="212" height="15" forecolor="#736343" uuid="1fec9b3d-1591-4145-8186-dbbdbef266f8"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[INITIAL ISSUE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="475" y="55" width="77" height="15" forecolor="#736343" uuid="db55f647-f490-416c-9300-388639a52759"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[STATUS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="64" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="cdd6a2c3-1ad4-4de6-9358-01e2245c53b1"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="61" height="15" uuid="8ab7d963-e6a9-4eea-b4ea-82f83a6f1eb8"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{ti_id}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="67" y="0" width="105" height="15" uuid="4a4f83d7-f40a-45b1-8f22-b225210a02dc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ti_dateRaised}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="263" y="0" width="212" height="56" uuid="1b47a378-459f-4385-866f-5b753dc56a6f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ti_description}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-1" y="56" width="556" height="1" uuid="47382524-8069-45e4-876b-ec9b3de29316"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="172" y="0" width="89" height="56" uuid="7bbb936e-42f7-4ed0-9641-06b6ce7b91c7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ti_assignee}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="475" y="0" width="77" height="15" uuid="78025623-e761-405c-9246-38e7705b1cb7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ti_status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="7a5341de-fbe3-4fd2-81be-d0ffa4b757a4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="2fd9c802-2cd4-4e9f-ad97-b422853c03bd"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="633baed4-0553-4c27-bffe-3ad2d598a965"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="2cdd6b7b-6f44-4558-93ee-95f192e29bbb"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="2af57890-9b8e-4468-8bb5-1a82b99ad5db"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

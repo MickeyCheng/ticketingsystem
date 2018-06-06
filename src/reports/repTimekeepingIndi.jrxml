@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d217d86b-fdb9-4129-9458-761972066814">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="dateFrom" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateTo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="GetEmployee" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select tk_name,tk_date,tk_login,tk_logout,tk_hours, tk_lunchin,tk_lunchout,tk_lunchhours from tbltimekeeping where tk_name =$P{GetEmployee} and tk_date between $P{dateFrom} and  $P{dateTo} order by tk_date ASC]]>
+	</queryString>
+	<field name="tk_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_login" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_logout" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_hours" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_lunchin" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_lunchout" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_lunchhours" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="total_hours" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{tk_hours}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="totalWorkDays" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{tk_date}.equals("") ? 0 : 1]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="219" y="62" width="196" height="22" uuid="02a2ce19-0b17-488f-8dd5-330f55197bbc"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Time Keeping Report]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="-307" y="-6" width="194" height="125" uuid="5b7c6b32-cb1e-4da3-9c11-b2555289654c"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame">
+				<reportElement x="-307" y="-6" width="194" height="125" uuid="4a6fe122-6f2a-4aff-9fe2-20161576a9ca"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame">
+				<reportElement x="-307" y="-6" width="194" height="125" uuid="8de8dc6b-67b6-4dfd-8272-c13377f05d75"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame">
+				<reportElement x="-307" y="-6" width="194" height="125" uuid="b417d108-d19a-44c6-bbf4-c67e53b50d12"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame">
+				<reportElement x="-307" y="-6" width="194" height="125" uuid="fd1e1340-8c34-4dc5-8579-0090db775386"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="195" y="0" width="357" height="62" uuid="c5120255-dbd3-4d2c-890d-c63ed2abba46"/>
+				<textElement verticalAlignment="Middle">
+					<font size="28" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[iSoft Information Technology]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="-307" y="-6" width="194" height="125" uuid="8d46bc34-9526-409d-b094-a0966ec2bd04"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame">
+				<reportElement x="-307" y="-6" width="194" height="125" uuid="91d88e8e-ce62-4b36-8276-c05588c4585f"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame">
+				<reportElement x="-307" y="-6" width="194" height="125" uuid="b00e67e0-2641-49e2-b961-e3b6854dce65"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame">
+				<reportElement x="-307" y="-6" width="194" height="125" uuid="a03f2ce7-0917-42b2-92c5-c80e0e1c7367"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="0" width="195" height="136" uuid="d18f9a4e-b25c-4af0-acda-33da5e0af562"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="54" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="ea91b092-6cf7-4891-9cf3-0966b1ffc189"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="1" y="16" width="111" height="15" forecolor="#736343" uuid="23c361c4-4b68-45b3-a32c-9486b683b664"/>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1" y="39" width="78" height="15" forecolor="#736343" uuid="37a58f81-dfa1-4f3c-85c0-aa59f0a76765"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="39" width="78" height="15" forecolor="#736343" uuid="2495dcd5-96db-4504-a7f0-4d95a5823a60"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Login]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="157" y="39" width="78" height="15" forecolor="#736343" uuid="5ac3c9fc-3d4c-4946-8603-8a8f5a34ac14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Logout]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="235" y="39" width="78" height="15" forecolor="#736343" uuid="c64c57c7-1a89-4ce1-b7ef-bf75848fc98a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Hours]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="112" y="16" width="440" height="15" uuid="007faed5-10de-4ff0-9393-fda912566ad9"/>
+				<textFieldExpression><![CDATA[$F{tk_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="477" y="39" width="75" height="15" forecolor="#736343" uuid="1801335a-bec9-4bf9-b5f6-b237397eee57"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[L. Hours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="402" y="39" width="75" height="15" forecolor="#736343" uuid="0d03b54e-1f7f-4eff-bac7-7029fe325dfa"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Lunch In]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="327" y="39" width="75" height="15" forecolor="#736343" uuid="5ab9bfa6-2974-4d75-8f6c-4e6d9eeb61cd"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Lunch Out]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="d7a7dcbe-c096-4f53-9fd3-bba51e9e7da8"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="1" y="0" width="78" height="15" uuid="8705ce00-3fca-4397-8f95-90c20e18c5da"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{tk_date}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="79" y="0" width="78" height="15" uuid="48d47335-1591-4683-84aa-3af7331e5757"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{tk_login}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="157" y="0" width="78" height="15" uuid="0454b9af-d3ef-4b2a-beaa-8b12d8221ed7"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{tk_logout}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="235" y="0" width="78" height="15" uuid="edce71ed-5f1e-448e-bb1f-110ec799bf54"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{tk_hours}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="402" y="0" width="75" height="15" uuid="c1043126-71e3-4ad3-b481-80eb661356f0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tk_lunchin}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="477" y="0" width="75" height="15" uuid="0acc9a19-a4cd-498f-ac45-b6b3287fc6a2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tk_lunchhours}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="327" y="0" width="75" height="15" uuid="23e10d9a-b0de-4668-90cc-49c49d3fe2de"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tk_lunchout}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="62" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="bd5a4a1c-d829-412c-ba8a-d3aec7ed37f5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="455" y="16" width="100" height="20" uuid="42159303-c3b3-44f2-81f7-02b184e7d23d"/>
+				<textFieldExpression><![CDATA[$V{totalWorkDays}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="455" y="41" width="100" height="20" uuid="71fb476f-930b-4f30-afa0-ecd9b17233ce"/>
+				<textFieldExpression><![CDATA[$V{total_hours}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="381" y="41" width="74" height="15" forecolor="#736343" uuid="771db672-a797-4580-a836-e89d42604d14"/>
+				<text><![CDATA[Total Hours:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="381" y="16" width="74" height="15" forecolor="#736343" uuid="3600bee9-cfcd-421a-96c7-ef39f24570ab"/>
+				<text><![CDATA[Total Days:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="8f1cce31-177e-4cb5-85b9-8cd457daa525"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="84cc8605-128f-414a-bd94-e9a975a0835b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="29d20316-4488-4074-88b4-d3d4fd9c5e1c"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="9a75f718-a27c-4327-b18b-e4aa417c890c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

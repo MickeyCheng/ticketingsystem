@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="af200bd8-efb9-4a05-830c-bc8c22102a39">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="selectedID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="showAttachment" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from tblTicket
+INNER JOIN tblTicketSequence on ti_id=ts_tiID where ti_id = $P{selectedID}]]>
+	</queryString>
+	<field name="ti_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_client" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_dateRaised" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_category" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_assignee" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_assigned" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ti_type" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ts_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ts_tiID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ts_tixUpdate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ts_date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="204" y="10" width="357" height="62" uuid="90e1c739-2cce-4687-8b05-2ed90c3c4691"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[iSoft Information Technologies]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="291" y="72" width="196" height="22" uuid="bf775226-502e-47ec-9601-632f2676c3af"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="16" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[ticketing report]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="10" y="10" width="194" height="125" uuid="9e5e02b4-47c8-411c-b779-eb478c6b67ff"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="224" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="1" y="0" width="104" height="15" forecolor="#736343" uuid="94194804-f7e5-464e-83d3-f41499161e1b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CLIENT ID:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="1" y="15" width="104" height="15" forecolor="#736343" uuid="c9ac3da3-e3ca-49a6-9612-98466e4bd8ce"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CLIENT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="30" width="105" height="15" forecolor="#736343" uuid="bf6f00f7-8260-42a0-9ad5-8b0cc00c3fa0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DATE RAISED:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="305" y="30" width="99" height="15" forecolor="#736343" uuid="4d176a4f-b9bb-418d-bd62-c5415b283dca"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[STATUS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="305" y="0" width="99" height="15" forecolor="#736343" uuid="4fbc68cf-e4f1-444a-871f-21fa04fb776b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CATEGORY:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="45" width="105" height="15" forecolor="#736343" uuid="8d16807d-72bb-4aae-9a4e-a007ba4f3d9f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ASSIGNED BY:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="305" y="15" width="99" height="15" forecolor="#736343" uuid="2ce098fb-28db-443d-beba-fbfca2f0b3b2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[TYPE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="305" y="45" width="99" height="15" forecolor="#736343" uuid="c1ff699e-ea5d-4224-8dbf-bcf7cc6b49cf"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ASSIGNED TO:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="122" y="45" width="168" height="15" uuid="e8b1137f-10ef-467e-ad2d-34da9197808e"/>
+				<textFieldExpression><![CDATA[$F{ti_assignee}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="415" y="15" width="137" height="15" uuid="36857833-8cb7-43b7-9566-27950b42a400"/>
+				<textFieldExpression><![CDATA[$F{ti_type}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="415" y="45" width="137" height="15" uuid="2910215a-1123-445f-aaa8-8922fa651218"/>
+				<textFieldExpression><![CDATA[$F{ti_assigned}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="413" y="0" width="139" height="15" uuid="3ac05166-6a6b-42c6-903b-98f9ab1f5f2b"/>
+				<textFieldExpression><![CDATA[$F{ti_category}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="413" y="30" width="139" height="15" uuid="b4beaf7e-0ca7-430a-879a-8edaa5ffe4a2"/>
+				<textFieldExpression><![CDATA[$F{ti_status}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="123" y="30" width="167" height="15" uuid="83c880de-e298-4fd9-bdc9-dc8e89e2dfd7"/>
+				<textFieldExpression><![CDATA[$F{ti_dateRaised}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="123" y="15" width="167" height="15" uuid="2223e774-4725-4719-ba1d-49e70f2dc888"/>
+				<textFieldExpression><![CDATA[$F{ti_client}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="123" y="0" width="167" height="15" uuid="72c2e240-07ff-4270-8285-fa22f3252ef1"/>
+				<textFieldExpression><![CDATA[$F{ti_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="9" y="206" width="99" height="15" forecolor="#736343" uuid="eaecd92f-2926-415d-ac98-7903021c74d1"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="138" y="206" width="417" height="15" forecolor="#736343" uuid="e0fb48f1-01f6-4dab-89a0-d5490b8a7024"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[NOTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="77" width="169" height="15" forecolor="#736343" uuid="0d410e13-a306-4e5b-83fe-f5bfe82982f8"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[INITIAL ISSUE:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="6" y="93" width="320" height="99" uuid="73ea63be-c3ca-44ab-ac67-1128718976b4"/>
+				<textFieldExpression><![CDATA[$F{ti_description}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="332" y="93" width="220" height="99" uuid="475257aa-8f50-4ff9-83f2-236317a4e925"/>
+				<imageExpression><![CDATA[$P{showAttachment}]]></imageExpression>
+			</image>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="6" y="0" width="100" height="20" uuid="9464ed8f-7d3a-4ea7-8d8d-e970cc975860"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ts_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="135" y="0" width="417" height="40" uuid="c5ceea22-60a8-4550-b128-96654e8686f2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ts_tixUpdate}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="1" y="0" width="555" height="1" uuid="dbafc45c-bc4d-45e9-b583-df2aad70fe47"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="647a05b3-57b5-4433-b466-51991ac5717f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="aa077024-e15e-4617-ba62-21940e534164"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="00cc2a26-dca9-4fbf-bbbd-09728550df8c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="07d58104-9deb-47cd-bd45-e027a1517293"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="ff66a765-f462-4ed5-bfc1-707230297859"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

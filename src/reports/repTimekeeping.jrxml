@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4542c34-02f3-40ab-928a-d40f7f37a58b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="dateFrom" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateTo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select tk_name,tk_date,tk_login,tk_logout,tk_hours,tk_lunchin,tk_lunchout,tk_lunchhours from tbltimekeeping where tk_date between $P{dateFrom} and $P{dateTo} order by tk_name,tk_date ASC]]>
+	</queryString>
+	<field name="tk_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_login" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_logout" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_hours" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_lunchin" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_lunchout" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tk_lunchhours" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="total_hours" class="java.lang.Double" resetType="Group" resetGroup="tk_name" calculation="Sum">
+		<variableExpression><![CDATA[$F{tk_hours}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="totalWorkDays" class="java.lang.Integer" resetType="Group" resetGroup="tk_name" calculation="Count">
+		<variableExpression><![CDATA[$F{tk_date}.equals("") ? 0 : 1]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<group name="tk_name">
+		<groupExpression><![CDATA[$F{tk_name}]]></groupExpression>
+		<groupHeader>
+			<band height="49">
+				<frame>
+					<reportElement mode="Opaque" x="-21" y="-1" width="597" height="24" forecolor="#B89F7D" backcolor="#F2EBDF" uuid="8c97976b-562f-48a1-ac7f-d0f62d745f15"/>
+					<rectangle>
+						<reportElement mode="Opaque" x="21" y="0" width="36" height="24" backcolor="#736343" uuid="65a303fc-071a-43d6-8c23-5cb405cd8e52"/>
+						<graphicElement>
+							<pen lineWidth="0.0"/>
+						</graphicElement>
+					</rectangle>
+					<textField>
+						<reportElement style="SubTitle" x="68" y="0" width="413" height="24" forecolor="#736343" uuid="6380ea55-9f73-4eee-92ac-24582ca42b82"/>
+						<textElement>
+							<font isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{tk_name}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<staticText>
+					<reportElement style="Column header" x="1" y="31" width="79" height="15" forecolor="#736343" uuid="676346b6-8eb0-4710-8240-159cdbb0310a"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="80" y="31" width="75" height="15" forecolor="#736343" uuid="287e4f21-27be-446a-8837-372ac2cd3e2d"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Login]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="155" y="31" width="75" height="15" forecolor="#736343" uuid="bce69c4f-6669-4e4d-ac59-a4528ff0611c"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Logout]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="230" y="31" width="75" height="15" forecolor="#736343" uuid="4718470d-2247-4bb7-98df-1c542722a562"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Hours]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="310" y="31" width="75" height="15" forecolor="#736343" uuid="256192e4-7c26-455e-8b7d-e1a7b41ae6f5"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Lunch Out]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="385" y="31" width="75" height="15" forecolor="#736343" uuid="90d515ae-3ea2-4069-8924-d2544a6ad089"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Lunch In]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="460" y="31" width="75" height="15" forecolor="#736343" uuid="2a4e057f-3d30-4456-9986-75d5f3102ed8"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[L. Hours]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="57">
+				<textField pattern="###0.00">
+					<reportElement x="452" y="37" width="100" height="20" uuid="8daf1955-096a-4956-9f13-635078edaa33"/>
+					<textFieldExpression><![CDATA[$V{total_hours}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="452" y="12" width="100" height="20" uuid="11dafb2a-435d-41e6-b007-9b8ead4b243c"/>
+					<textFieldExpression><![CDATA[$V{totalWorkDays}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="378" y="12" width="74" height="15" forecolor="#736343" uuid="dbafaca7-5fc6-4795-84c4-7848c76c5668"/>
+					<text><![CDATA[Total Days:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="378" y="37" width="74" height="15" forecolor="#736343" uuid="1b1547a3-93fc-4969-bb32-d5a98b89dcac"/>
+					<text><![CDATA[Total Hours:]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="198" y="0" width="357" height="62" uuid="5bf85483-1a50-468d-bd40-fa03758afe99"/>
+				<textElement verticalAlignment="Middle">
+					<font size="28" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[iSoft Information Technology]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="219" y="62" width="196" height="22" uuid="298799a7-cb3a-4f9a-be1a-92fae3e307d6"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Time Keeping Report]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="4" y="0" width="194" height="125" uuid="b01e8c37-84d8-4317-bab6-6f0a1f48a940"/>
+				<imageExpression><![CDATA["src\\iSoft Logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="d75bb5ed-39dd-43d1-b3cb-dacd5b5b1372"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="e3666da7-7392-4ac5-b279-743644c90d90"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="79" height="15" uuid="8395fdc9-24e2-4eaa-9948-9f80e481c167"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{tk_date}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="155" y="0" width="75" height="15" uuid="57fd5158-0cd6-4c4d-8ee6-ab06e6d092f2"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{tk_logout}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="230" y="0" width="75" height="15" uuid="6ccc42cd-0616-4766-8e6c-cab6a4b84843"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{tk_hours}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="80" y="0" width="75" height="15" uuid="a8d24e64-9653-4f36-b733-0a2b632cba71"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tk_login}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="460" y="0" width="75" height="15" uuid="78066803-450b-486e-bbb9-101be0377e8e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tk_lunchhours}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="310" y="0" width="75" height="15" uuid="91ecdaca-cc57-4948-a60f-c0e0421634f2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tk_lunchout}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="385" y="0" width="75" height="15" uuid="383c7761-c2b3-4729-aaef-300204c7cae2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tk_lunchin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="3266c6e5-0a97-4fb1-a40f-574852bc30b4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="3b55a283-3e89-4aaa-8023-0ce43ea59693"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="2f85db83-c256-44d5-a292-2d38a14804d7"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="edbbc490-6c74-49c6-a99a-2bef8cf92dea"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="18ac03c6-42fa-418f-87b3-2d63847cf8e4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
